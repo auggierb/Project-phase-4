@@ -1,12 +1,14 @@
-import NavBar from "./NavBar"
-import {Routes, Route} from 'react-router-dom'
+
+
 import Search from "./Search"
 
-function Home({setUser}){
+function Home({setUser, user}){
 
-   
+  
         return(
             <>
+         
+         <h3>welcome {user.username}</h3>
          
             </>
         )

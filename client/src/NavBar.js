@@ -5,12 +5,15 @@ function NavBar({setUser}){
         fetch('/logout',{
             method:'DELETE'
         }).then((r)=>{
-            if (r.ok){setUser(null)}
+            if (r.ok){setUser([])}
         }) }
     return (
         <>
-        <button onClick={(e)=>{setUser(null)}}>LogOut</button>
-        
+        <button onClick={handleLogout}>LogOut</button>
+        <NavLink to='/'>Home</NavLink>
+        <NavLink to='/search'>Search</NavLink>
+        <NavLink to='/usercard'>My Cards</NavLink>
+        <NavLink to='/userComments'>Comments</NavLink>
         </>
     )
 }

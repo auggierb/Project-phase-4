@@ -1,26 +1,37 @@
 
 import React, {useEffect, useState} from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './Home';
 import Login from './Login';
+import NavBar from './NavBar';
 import SignUpForm from './SignUpForm'
-
+import Search from './Search';
+import UserCards from './UserCards';
+import CommentForm from './CommentForm';
 function App() {
   const [user, setUser]=useState('')
 
-  useEffect(()=>{
+ useEffect(()=>{
     fetch("/me").then((r)=>{
       if (r.ok) {
         r.json().then((r)=> setUser(r))
       }
     })
-  }, [])
+  },[])
   if (user){
     return <>
-    <h3>welcome - {user.username}</h3>
    
-    <Home setUser={setUser}/>
+   
+    
+    <NavBar setUser={setUser}/>
 
+    <Routes>
+      <Route exact path='/' element={<Home user={user}/>}/>
+      <Route exact path='/search'element={<Search user={user}/>}/>
+      <Route exact path='/usercard' element={<UserCards user_id={user.id}/>}></Route>
+      <Route exact path='/userComments' element={<CommentForm/>}></Route>
+    </Routes>
     </>
   }
   else{

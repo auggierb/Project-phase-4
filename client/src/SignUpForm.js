@@ -19,7 +19,9 @@ function SignUpForm(setUser){
             })
         }
     return(
+        
         <>
+        
          <form onSubmit={handleSignUp}>
         <input type="text" id="username" value={username} onChange={(e)=>setUsername(e.target.value)}placeholder='Username'/>
         <input type="password" id="password" value={password} onChange={(e)=>setPassword(e.target.value)}placeholder='Password'/>

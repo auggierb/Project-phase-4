@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+    wrap_parameters false
     def create 
         user = User.create(user_params)
         if user.valid?
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     
         
         def show
-        user= User.find_by(id: session[:user_id])
+        user= User.find_by(id: session[:users_id])
         if user
             render json: user 
         else render json: {error: "Not Authorized"}, status: :unauthorized
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
         end
     
         def user_params
-        params.permit(:username, :password, :password_confirmation )
+        params.permit(:username, :password, :password_confirmation, :id)
         end 
     
 end
