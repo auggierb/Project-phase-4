@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   get '/comments', to: 'comments#index'
   get "/me", to: "users#show"
   delete "/logout", to: "sessions#destroy"
+  delete '/usercards/:id', to:'cards#destroy'
 end

@@ -3,9 +3,13 @@ class CardsController < ApplicationController
     def create 
         card = Card.create(card_params)
        if card.valid?
-        render json: card, status: :created, include: :user
+        render json: card, status: :created, include: :comments
         else render json:{errors: card.errors}
     end
+    end
+    def destroy
+        card = Card.find_by(id: params[:id])
+        card.destroy
     end
 
     def show 
@@ -15,7 +19,7 @@ class CardsController < ApplicationController
 
     def index
       card = Card.all 
-      render json: card
+      render json: card, include: :user, include: :comments
         
     end
     

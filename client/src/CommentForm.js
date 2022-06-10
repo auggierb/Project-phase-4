@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 
-function CommentForm(){
+function CommentForm({user_id}){
     const[comment, setComment]=useState('')
     const[currentCom, setCurrent]=useState([])
     useEffect(()=>{
@@ -11,14 +11,11 @@ function handleSubmit(e){
     fetch('/comment',{
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({comment})
+        body: JSON.stringify({comment, user_id: user_id})
 
     })
 
-    const allCom= currentCom.map((r)=>{
-        return <h2>{r.comment}</h2>
-    })
-
+   
 }
 
     return <>

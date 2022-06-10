@@ -17,6 +17,12 @@ function UserCards({user_id}){
                quantity: quantity + 1
            }) }).then((r)=>r.json)
     }
+        function handleDelete(e){
+            fetch(`/usercards/${e.target.value}`,{
+                method: 'DELETE'
+            })
+
+        }
     return(
         <>
         {cards.map((card)=>{
@@ -24,7 +30,10 @@ function UserCards({user_id}){
             <h2>{card.name}</h2>
             <img src= {card.image} alt={card.name}/>
             <h3>{card.quantity}</h3>
+            <h3>{card.comment}</h3>
             <input type='button' value={card.id} onClick={handleClick}/>
+            <input type='button' value={card.id} onClick={handleDelete}/>
+            <CommentForm user_id={user_id}/>
             
                </>
         })}
