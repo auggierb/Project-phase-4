@@ -3,7 +3,7 @@ class CardsController < ApplicationController
     def create 
         card = Card.create(card_params)
        if card.valid?
-        render json: card, status: :created, include: :comments
+        render json: card, status: :created, include: :user
         else render json:{errors: card.errors}
     end
     end
@@ -19,7 +19,7 @@ class CardsController < ApplicationController
 
     def index
       card = Card.all 
-      render json: card, include: :user, include: :comments
+      render json: card, include: :user
         
     end
     

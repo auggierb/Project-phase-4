@@ -11,7 +11,7 @@ function handleSubmit(e){
     fetch('/comment',{
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({comment, user_id: user_id})
+        body: JSON.stringify({comment})
 
     })
 

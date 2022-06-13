@@ -11,14 +11,14 @@ function UserCards({user_id}){
         })
     },[])
     function handleClick(e){
-        fetch(`/usercards/${e.target.value}`, {
+        fetch(`/usercards/${e.target.id}`, {
             method: 'PATCH',
            body: JSON.stringify({
                quantity: quantity + 1
            }) }).then((r)=>r.json)
     }
         function handleDelete(e){
-            fetch(`/usercards/${e.target.value}`,{
+            fetch(`/usercards/${e.target.id}`,{
                 method: 'DELETE'
             })
 
@@ -31,8 +31,8 @@ function UserCards({user_id}){
             <img src= {card.image} alt={card.name}/>
             <h3>{card.quantity}</h3>
             <h3>{card.comment}</h3>
-            <input type='button' value={card.id} onClick={handleClick}/>
-            <input type='button' value={card.id} onClick={handleDelete}/>
+            <input type='button' id={card.id} value={'add'} onClick={handleClick}/>
+            <input type='button' id={card.id} value={'delete'} onClick={handleDelete}/>
             <CommentForm user_id={user_id}/>
             
                </>

@@ -8,7 +8,7 @@ import NavBar from './NavBar';
 import SignUpForm from './SignUpForm'
 import Search from './Search';
 import UserCards from './UserCards';
-import CommentForm from './CommentForm';
+import Comments from './Comments';
 function App() {
   const [user, setUser]=useState('')
 
@@ -30,7 +30,7 @@ function App() {
       <Route exact path='/' element={<Home user={user}/>}/>
       <Route exact path='/search'element={<Search user={user}/>}/>
       <Route exact path='/usercard' element={<UserCards user_id={user.id}/>}></Route>
-      <Route exact path='/userComments' element={<CommentForm/>}></Route>
+      <Route exact path='/userComments' element={<Comments/>}></Route>
     </Routes>
     </>
   }
