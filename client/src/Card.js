@@ -1,12 +1,12 @@
 import {useState} from 'react'
-function Card({name, image, text, level, types, user_id }){
+function Card({name, image, text, level, types}){
     const[cardData, setCardData]=useState({
         name:'',
         image:'',
         text:'',
         level:'',
-        types:[],
-        user_id
+        types:[]
+        
         
     })
     function addCards(e){
@@ -16,8 +16,8 @@ function Card({name, image, text, level, types, user_id }){
             image: image,
             text: text,
             level: level,
-            types: types,
-            user_id: user_id, 
+            types: types
+             
       
           
         })

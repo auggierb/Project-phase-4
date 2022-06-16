@@ -6,7 +6,6 @@ class CreateCards < ActiveRecord::Migration[6.1]
       t.string :text
       t.integer :level
       t.string :types
-      t.references :user
       t.timestamps
     end
   end

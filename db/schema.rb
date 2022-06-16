@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_10_210513) do
+ActiveRecord::Schema.define(version: 2022_06_15_200100) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
@@ -18,24 +18,26 @@ ActiveRecord::Schema.define(version: 2022_06_10_210513) do
     t.string "text"
     t.integer "level"
     t.string "types"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity", default: 0
-    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
     t.string "comment"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "user_comments", force: :cascade do |t|
+  create_table "user_cards", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "comment_id"
+    t.integer "card_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["card_id"], name: "index_user_cards_on_card_id"
+    t.index ["user_id"], name: "index_user_cards_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

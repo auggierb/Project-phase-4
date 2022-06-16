@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     def create
         comment= Comment.create(comment_params)
         if comment.valid?
-        render json: comment, status: :created, include: :user_comments
+        render json: comment, status: :created, include: :user
         else render json: {errors: comment.errors}
     end
     end

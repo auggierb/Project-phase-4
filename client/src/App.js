@@ -9,7 +9,9 @@ import SignUpForm from './SignUpForm'
 import Search from './Search';
 import UserCards from './UserCards';
 import Comments from './Comments';
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
+  
   const [user, setUser]=useState('')
 
  useEffect(()=>{

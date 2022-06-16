@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users do 
     resources :cards
   end
+  resources :comments
   patch 'usercards/:id', to: 'cards#update'
   post '/usercards', to: 'cards#create'
   get '/usercards/', to: 'cards#index'

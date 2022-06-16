@@ -3,8 +3,9 @@ class CardsController < ApplicationController
     def create 
         card = Card.create(card_params)
        if card.valid?
-        render json: card, status: :created, include: :user
-        else render json:{errors: card.errors}
+        render json: card, status: :created, include: :users
+        else 
+        render json:{errors: card.errors}
     end
     end
     def destroy
@@ -19,7 +20,7 @@ class CardsController < ApplicationController
 
     def index
       card = Card.all 
-      render json: card, include: :user
+      render json: card, include: :users
         
     end
     
@@ -35,6 +36,6 @@ class CardsController < ApplicationController
 
     private
     def card_params
-        params.permit(:id, :name, :image, :text, :level, :quantity, :card, :user_id, :types => [])
+        params.permit( :name, :image, :text, :level, :quantity, :types => [])
     end
 end 
