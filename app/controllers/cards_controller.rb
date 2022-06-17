@@ -3,6 +3,7 @@ class CardsController < ApplicationController
     def create 
         card = Card.create(card_params)
        if card.valid?
+        card.users << User.all
         render json: card, status: :created, include: :users
         else 
         render json:{errors: card.errors}

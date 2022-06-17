@@ -1,8 +1,9 @@
 class User < ApplicationRecord
    has_secure_password
-   has_many :comments
    has_many :user_cards 
    has_many :cards, through: :user_cards
-  
+   has_many :comments
+
+ 
 end
  

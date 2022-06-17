@@ -11,11 +11,10 @@ function UserCards({user_id}){
         })
     },[])
     function handleClick(e){
+        const updateQuantity = {quantity: quantity + 1}
         fetch(`/usercards/${e.target.id}`, {
             method: 'PATCH',
-           body: JSON.stringify({
-               quantity: quantity + 1
-           }) }).then((r)=>r.json)
+           body: JSON.stringify(updateQuantity) }).then((r)=>r.json()).then((r)=> setQuantity(r))
     }
         function handleDelete(e){
             fetch(`/usercards/${e.target.id}`,{
@@ -23,7 +22,7 @@ function UserCards({user_id}){
             })
 
         }
-    return(
+    return(  
         <>
         {cards.map((card)=>{
      return <> 
